@@ -1,0 +1,53 @@
+{
+    "furniture":[
+        {
+            "id": 1,
+            "name": "Dinning Table",
+            "price": 2500,
+            "Description": "It is a dinning table with a well finished top",
+            "img": "./Components/funiture/dinning.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Office Chair",
+            "price": 2000,
+            "Description": "It is an office Chair with proper stands and handles",
+            "img": "./Components/funiture/office-chair.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Single Chair",
+            "price": 2500,
+            "Description": "It is a Single Chair with a well finished base",
+            "img": "./Components/funiture/single-chair.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Dinning Table",
+            "price": 2500,
+            "Description": "It is a dinning table with a well finished top",
+            "img": "./Components/funiture/dinning.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Sofa",
+            "price": 15000,
+            "Description": "It is a Sofa",
+            "img": "./Components/funiture/sofa.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Stool",
+            "price": 2500,
+            "Description": "It is a Stool",
+            "img": "./Components/funiture/stool.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Wall Decor",
+            "price": 2500,
+            "Description": "It is a Wall Decor",
+            "img": "./Components/funiture/wall-decor.jpg"
+        }
+    ]
+}
