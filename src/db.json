@@ -49,5 +49,11 @@
             "Description": "It is a Wall Decor",
             "img": "./Components/funiture/wall-decor.jpg"
         }
+    ],
+    "login":[
+        {
+            "username": "admin",
+            "password": "admin123"
+        }
     ]
 }
