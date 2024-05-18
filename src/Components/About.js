@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
+import ContactForm from "./ContactForm"
 
 export default function About() {
   return (
@@ -36,6 +37,7 @@ export default function About() {
             </p>
           </div>
         </div>
+        <ContactForm/>
       </main>
     </>
   );
