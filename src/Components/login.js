@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css'
 import NavBar from "./NavBar";
@@ -10,10 +10,17 @@ function LoginPage() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate(); 
 
+
+  useEffect(() => {
+    const storedLoggedInState = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(storedLoggedInState);
+  }, []);
+
   const handleLogin = (event) => {
     event.preventDefault();
     if(username==='admin' && password==='password123') {
     setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true');
     setUsername(username);
     setPassword(password);
     navigate('/', { state: { isLoggedIn: true } });
@@ -24,6 +31,7 @@ function LoginPage() {
   console.log(isLoggedIn)
   const handleLogout = () => {
     setIsLoggedIn(false);
+    localStorage.setItem('isLoggedIn', 'false');
     alert('User has been logged out.');
   };
 
@@ -42,7 +50,7 @@ function LoginPage() {
             Password:
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           </label>
-          {isLoggedIn ? <button onClick={handleLogout}>Logout</button>:<button type="submit">login</button>}
+          {isLoggedIn ? <button type='submit'onClick={handleLogout}>Logout</button>:<button type="submit">login</button>}
         </form>
     </div>
     </>

@@ -1,14 +1,11 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { useLocation } from 'react-router-dom';
 
 export default function About() {
-  const location = useLocation();
-  const isLoggedIn = location.state?.isLoggedIn || false;
   return (
     <>
       <header>
-        <NavBar isLoggedIn={isLoggedIn}/>
+        <NavBar />
       </header>
       <main>
         <div style={{ display: "flex" }}>

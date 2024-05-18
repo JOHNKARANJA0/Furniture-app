@@ -1,15 +1,24 @@
-import React, { createContext, useState } from 'react';
+// AuthContext.js
+import React, { createContext, useState, useEffect } from 'react';
 
-const AuthContext = createContext(false); // Default value for isLoggedIn
+const AuthContext = createContext();
 
-function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const AuthProvider = ({ children }) => {
+  const [isloggedin, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isloggedin') === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isloggedin', isloggedin);
+  }, [isloggedin]);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider value={{ isloggedin, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-export { AuthContext, AuthProvider};
+export const useAuth = () => {
+  return React.useContext(AuthContext);
+};
