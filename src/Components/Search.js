@@ -16,7 +16,6 @@ export default function Search() {
       .then(data => setArts(data))
       .catch(error => alert('Error fetching arts:', error));
   }, []);
-  console.log(filteredArts)
   if (!arts.length) {
     return <div>Loading...</div>;
   }

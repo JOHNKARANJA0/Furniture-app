@@ -2,7 +2,6 @@ import React from 'react'
 import NavBar from './NavBar'
 
 export default function AddFurniture({isLoggedIn}) {
-  console.log(isLoggedIn)
   return (
     <div>
       <header>

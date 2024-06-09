@@ -28,7 +28,6 @@ function LoginPage() {
   }
     else { alert('wrong password or username')}
   };
-  console.log(isLoggedIn)
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.setItem('isLoggedIn', 'false');

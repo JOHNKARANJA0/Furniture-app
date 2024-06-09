@@ -1,62 +1,41 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import "./ContactForm.css"
 
 function Contact() {
-  const [feedback, setFeedback] = useState('');
-  const [email, setEmail] = useState('');
+  const form = useRef();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    // Validation (optional)
-    if (!feedback.trim() || !email.trim()) {
-      alert('Please enter feedback and email address.');
-      return;
-    }
-
-    fetch('https://furniture-website-data.onrender.com/Emails', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, feedback }),
-    })
-      .then((response) => {
-        if (response.ok) {
-            console.log(response)
-          alert('Feedback submitted successfully!');
-          setFeedback('');
-          setEmail('');
-
-        } else {
-          alert('Error submitting feedback. Please try again later.');
-        }
+    emailjs
+      .sendForm('service_fu7wah5', 'template_6kq6izn', form.current, {
+        publicKey: 'arsit-fj_4qJGf3Ao',
       })
-      .catch((error) => {
-        console.error('Error submitting feedback:', error);
-        alert('An unexpected error occurred. Please try again later.');
-      });
-  };
-
-  return (
-    <div className="about-container">
-      {/* About content */}
-      <div className="contact-form">
-        <h2>Contact Us</h2>
-        <form onSubmit={handleSubmit}>
-        <label>
-            Email Address:
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="email-input"/>
-          </label>
-          <label>
-            Feedback:
-            <textarea
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
-              className="feedback-input"
-            />
-          </label>
-          <button type="submit" className="submit-button">Send Feedback</button>
-        </form>
-      </div>
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          alert("Sent Successfully")
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          alert("Error sending the message. Please try again")
+        },
+      );
+  }
+  
+  return (  
+    <div className="contact-form">
+      <h2>Get in Touch</h2>
+        <form ref={form} onSubmit={sendEmail}>
+        <label>Name</label>
+        <input type="text" name="user_name" className='name-input' placeholder='Enter your name...'/>
+        <label>Email</label>
+        <input type="email" name="user_email" className='email-input' placeholder='Enter your email...'/>
+        <label>Message</label>
+        <textarea name="message" className='feedback-input' placeholder='Enter the message below...'/>
+        <input type="submit" value="Send" className='submit-button'/>
+      </form>
     </div>
   );
 }
